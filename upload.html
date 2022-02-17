@@ -14,9 +14,19 @@
             <li><a href="upload.html">submit</a></li>
         </ul>
     </header>
-        <label for="picture">Upload a picture:</label>
-        <input type="file" accept="image/png, image/jpeg" name="picture">
-        <br/>
-        <input type="submit" value="Submit">
+    <div class="up-area">
+        <form  class="form">
+        <label class="form_label" for="up">
+        <input type="file" id="up" accept="image/png, image/jpeg" name="picture">
+        <span id="up_text">
+            Upload a picture
+        </span>
+        
+        <img src="Octicons-cloud-upload.svg.png" alt="" id="up-icon">
+    </label>
+    <input type="submit" id="sub-btn" value="Submit">
+    </form>
+    </div>
+    
     </body>
 </html>

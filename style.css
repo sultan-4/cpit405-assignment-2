@@ -94,4 +94,51 @@ line-height: 40px;
     justify-content: center;
     align-items: center;
 }
+#search-icon{
+position: absolute;
+left: 83%;
+top: 18px;
+width: 23px;
+}
+
+.up-area{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#sub-btn{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100%;
+}
+.form{
+    position: relative;
+}
+
+#up{
+    
+    width: 30px;
+    height: 150x;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.form_label{
+display: inline-flex;
+justify-content: left;
+align-items: center;
+padding: 24px , 35px;
+background: #2f3640;
+border-radius: 50px;
+}
+
+#up-icon{
+    width: 50px;
+    margin-left: 20px;
+    padding-right: 8px;
+}
+
 
