@@ -38,11 +38,19 @@ ul :hover{
     background-color: blanchedalmond;
 }
 
+.filter{
+    
+position: absolute;
 
+margin-left: 30%;
+}
+h3{
+    transform: translateX(35%);
+}
 .image{
     position: relative;
     text-align: center;
-    margin-top: 1%;    
+    margin-top: 10%;    
 }
 img{
     width: 30%;
