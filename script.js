@@ -51,16 +51,3 @@ function processImageRequest(response_text) {
 }
 requestAlbum()
 
-function addImages() {
-  imagesDiv.innerHTML = "";
-  for (imageItem of images) {
-      imagesDiv.innerHTML += '<div>' +
-          '                <img src="' + imageItem.download_url + '">' +
-          '                <div class="info">' +
-          '                    <span>' +
-          '                        ID: ' + imageItem.id + ', Author: ' + imageItem.author +
-          '                    </span>' +
-          '                </div>' +
-          '            </div>';
-  }
-}
