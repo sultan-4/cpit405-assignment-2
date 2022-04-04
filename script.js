@@ -43,11 +43,11 @@ function requestImage(imageHash) {
 }
 
 function processImageRequest(response_text) {
-  images.innerHTML = "";
   var respObj = JSON.parse(response_text);
   let imgElem = document.createElement("img");
   imgElem.src = respObj.data.link;
-  images.innerHTML += '<img srs="'+ imgElem + '">'
+  document.body.appendChild(imgElem);
+  console.log(images.innerHTML)
 }
 requestAlbum()
 
