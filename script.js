@@ -1,31 +1,50 @@
-var liItem = document.querySelectorAll('ul li');
-var imgItem = document.querySelectorAll('.image img');
+const clientId = "1975510bca39a20";
+var defaultAlbumId = 'qwFBg';
+var images = document.getElementById("images")
 
-liItem.forEach(li => {
-  li.onclick = function () {
-    liItem.forEach(li => {
-      li.className = "";
-    })
-    li.className = "all";
-    var value = li.textContent;
-    document.cookie = 'liselect=' + value 
-    
-    showImage(imgItem,value)
-  }
-});
-
-window.onload = function () {
-  if (document.cookie != undefined) {
-      showImage(imgItem,document.cookie.split("=")[1])
-      console.log(document.cookie)
-  }
-}
-function showImage (imgItem ,value){
-  imgItem.forEach(img => {
-    img.style.display = 'none';
-    if (img.getAttribute('data-filter') == value || value == "All") {
-      img.style.display = '';
+function requestAlbum() {
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function () {
+        if (req.readyState == 4 && req.status == 200) {
+            processAlbumRequest(req.responseText);
+        }
+        else if (req.readyState == 4 && req.status != 200) {
+            console.log(req.status + " Error with the imgur API: ", req.responseText);
+        }
     }
-    
-  })
+    req.open('GET', 'https://api.imgur.com/3/album/' + albumId + '/images', true); // true for asynchronous     
+    req.setRequestHeader('Authorization', 'Client-ID ' + clientId);
+    req.send();
 }
+
+function processAlbumRequest(response_text) {
+  var respObj = JSON.parse(response_text);
+  for (item of respObj.data.slice(0, 10)){
+      console.log(item)
+      requestImage(item.id);
+  }
+}
+
+function requestImage(imageHash) {
+  var req = new XMLHttpRequest();
+  req.onreadystatechange = function () {
+      if (req.readyState == 4 && req.status == 200) {
+          processImageRequest(req.responseText);
+      }
+      else if (req.readyState == 4 && req.status != 200) {
+          console.log("Error with the imgur API");
+      }
+  }
+  req.open("GET", "https://api.imgur.com/3/image/" + imageHash, true); // true for asynchronous     
+  req.setRequestHeader('Authorization', 'Client-ID ' + clientId);
+  req.send();
+}
+
+function processImageRequest(response_text) {
+  var respObj = JSON.parse(response_text);
+  let imgElem = document.createElement("img");
+  imgElem.src = respObj.data.link;
+  images.appendChild(imgElem);
+}
+
+
