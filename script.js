@@ -1,8 +1,10 @@
 const clientId = "1975510bca39a20";
-var defaultAlbumId = 'qwFBg';
-var images = document.getElementById("images")
+var albumId = 'qwFBg';
+var images = document.getElementsByClassName("image")
 
+console.log("here")
 function requestAlbum() {
+  console.log("here")
     var req = new XMLHttpRequest();
     req.onreadystatechange = function () {
         if (req.readyState == 4 && req.status == 200) {
@@ -41,10 +43,24 @@ function requestImage(imageHash) {
 }
 
 function processImageRequest(response_text) {
+  images.innerHTML = "";
   var respObj = JSON.parse(response_text);
   let imgElem = document.createElement("img");
   imgElem.src = respObj.data.link;
-  images.appendChild(imgElem);
+  images.innerHTML += '<img srs="'+ imgElem + '">'
 }
+requestAlbum()
 
-
+function addImages() {
+  imagesDiv.innerHTML = "";
+  for (imageItem of images) {
+      imagesDiv.innerHTML += '<div>' +
+          '                <img src="' + imageItem.download_url + '">' +
+          '                <div class="info">' +
+          '                    <span>' +
+          '                        ID: ' + imageItem.id + ', Author: ' + imageItem.author +
+          '                    </span>' +
+          '                </div>' +
+          '            </div>';
+  }
+}
