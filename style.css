@@ -34,7 +34,11 @@ ul :hover{
     background-color: blanchedalmond;
 }
 
+.filter{
+    
+position: absolute;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 h3{
     transform: translateX(35%);
@@ -72,6 +76,17 @@ h3{
     text-align: center;
     margin-top: 1%;    
 >>>>>>> parent of 401d197 (filter)
+=======
+margin-left: 30%;
+}
+h3{
+    transform: translateX(35%);
+}
+.image{
+    position: relative;
+    text-align: center;
+    margin-top: 10%;    
+>>>>>>> parent of c539e0f (imgur api)
 }
 
 img{
