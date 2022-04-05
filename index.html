@@ -20,13 +20,14 @@
     <hr>
     <div id="sort">
         <span>Sort By:</span>
-        <select name="" id="sortBy">
-            <option value="Default">Default</option>
-            <option value="Likes">Likes</option>
-            <option value="Date">Date</option>
+        <select  id="sortBy" onchange= sortImages()>
+            <option selected disabled >None</option>
+            <option value="views">Views</option>
+            <option value="downloads">Downloads</option>
+            <option value="likes">Likes</option>
         </select>
     </div>
-    <div class="image">
+    <div id="image">
 
     </div>
     <script src="script.js"></script>

@@ -1,53 +1,52 @@
-const clientId = "1975510bca39a20";
-var albumId = 'qwFBg';
-var images = document.getElementsByClassName("image")
 
-console.log("here")
-function requestAlbum() {
-  console.log("here")
-    var req = new XMLHttpRequest();
-    req.onreadystatechange = function () {
-        if (req.readyState == 4 && req.status == 200) {
-            processAlbumRequest(req.responseText);
-        }
-        else if (req.readyState == 4 && req.status != 200) {
-            console.log(req.status + " Error with the imgur API: ", req.responseText);
-        }
-    }
-    req.open('GET', 'https://api.imgur.com/3/album/' + albumId + '/images', true); // true for asynchronous     
-    req.setRequestHeader('Authorization', 'Client-ID ' + clientId);
-    req.send();
+const clientId =  "kZ631f9QCjgBSBo1NfQ2wdz6VSvF80YpCw9D04qu6qw";
+var images = document.getElementById("image")
+let imagess = [];
+
+
+var req = new XMLHttpRequest();
+req.onreadystatechange = function () {
+  if (req.readyState == 4 && req.status == 200) {
+    imagess = JSON.parse(req.responseText);
+    addImage();
+  } else if (req.readyState == 4 && req.status != 200) {
+    console.log(req.status + " Error with the splash API: ", req.responseText);
+  }
 }
+req.open('GET','https://api.unsplash.com/photos/random?count=12');
+req.setRequestHeader('Authorization', 'Client-ID ' + clientId);
+req.send();
 
-function processAlbumRequest(response_text) {
-  var respObj = JSON.parse(response_text);
-  for (item of respObj.data.slice(0, 10)){
-      console.log(item)
-      requestImage(item.id);
+
+
+function compare(a, b) {
+  var sortBy = document.getElementById('sortBy').selectedOptions[0].value;
+  if (a[sortBy] < b[sortBy]) {
+    return 1;
+  }
+  else if (a[sortBy] > b[sortBy]) {
+    return -1;
+  }
+  else {
+    return 0;
   }
 }
 
-function requestImage(imageHash) {
-  var req = new XMLHttpRequest();
-  req.onreadystatechange = function () {
-      if (req.readyState == 4 && req.status == 200) {
-          processImageRequest(req.responseText);
-      }
-      else if (req.readyState == 4 && req.status != 200) {
-          console.log("Error with the imgur API");
-      }
+
+function sortImages() {
+  imagess.sort(compare);
+  addImage()
+}
+
+function addImage(/*response_text*/) {
+  images.innerHTML ="";
+  for (img of imagess) {
+    images.innerHTML += '<div>'+
+                        '<img src="' + img.urls.raw + '">' +
+                        '<div id="view">'+
+                        '<span> Views:' + img.views + ' Downloads:' + img.downloads + '  Likes:' + img.likes +'</span>'+
+                        '</div>'+
+                        '</div>';
+
   }
-  req.open("GET", "https://api.imgur.com/3/image/" + imageHash, true); // true for asynchronous     
-  req.setRequestHeader('Authorization', 'Client-ID ' + clientId);
-  req.send();
 }
-
-function processImageRequest(response_text) {
-  var respObj = JSON.parse(response_text);
-  let imgElem = document.createElement("img");
-  imgElem.src = respObj.data.link;
-  document.body.appendChild(imgElem);
-  console.log(images.innerHTML)
-}
-requestAlbum()
-
