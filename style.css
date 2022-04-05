@@ -1,10 +1,14 @@
 body{
     height: 99vh;
-    background : linear-gradient(90deg,#EE7752,#E73C7E,#23A6D5,#255147);
-    background-attachment: fixed;
+    background : linear-gradient(45deg,#EE7752,#E73C7E,#23A6D5,#23D5AB);
 }
 
-
+/* .list{
+    position: absolute;
+    top: 90px;
+    right: 50%;
+    transform: translateX(50%);
+} */
 header{
     width: 100%;
     height: 70px;
@@ -38,45 +42,6 @@ ul :hover{
     
 position: absolute;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-h3{
-    transform: translateX(35%);
-}
-#sort{
-    float: right;
-}
-#image{
-    position: absolute;
-    margin: 50px;
-    border: solid 5px;
-}
-#image > div{
-    position: relative;
-    display: inline-block;
-    height: 500px;
-    padding: 20px;
-}
-
-#View > span {
-    color: rgb(255, 255, 255);
-}
- #View {
-    
-    min-height: 40px;
-    left: 20px;
-    bottom: 0px;
-    width: 100%;
-    position: absolute;
-   
-    
-=======
-.image{
-    position: relative;
-    text-align: center;
-    margin-top: 1%;    
->>>>>>> parent of 401d197 (filter)
-=======
 margin-left: 30%;
 }
 h3{
@@ -86,12 +51,10 @@ h3{
     position: relative;
     text-align: center;
     margin-top: 10%;    
->>>>>>> parent of c539e0f (imgur api)
 }
-
 img{
-    height: 500px;
-    width: 750px;
+    width: 30%;
+    position: relative;
 }
 
 h1{
@@ -185,5 +148,3 @@ border-radius: 40px;
     margin-left: 20px;
     padding-right: 8px;
 }
-
-
