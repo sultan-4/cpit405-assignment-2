@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 const clientId =  "kZ631f9QCjgBSBo1NfQ2wdz6VSvF80YpCw9D04qu6qw";
 var images = document.getElementById("image")
@@ -50,3 +51,29 @@ function addImage(/*response_text*/) {
 
   }
 }
+=======
+const liItem = document.querySelectorAll('ul li');
+const imgItem = document.querySelectorAll('.image img');
+
+liItem.forEach(li => {
+   li.onclick = function() {
+   
+    liItem.forEach(li => {
+        li.className = "";
+    })
+    li.className = "all";
+
+   
+    const value = li.textContent;
+    console.log(value)
+    imgItem.forEach(img => {
+        img.style.display = 'none';
+        if (img.getAttribute('data-filter') == value || value == "All") {
+            img.style.display = '';
+
+        }
+    })
+   }
+});
+
+>>>>>>> parent of f0c5539 (Cookies)
